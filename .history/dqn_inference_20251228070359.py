@@ -4,7 +4,7 @@ from itertools import count
 from dqn import DQN
 import numpy as np
 
-num_episodes = 250
+num_episodes = 10
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 

@@ -4,7 +4,7 @@ from itertools import count
 from dqn import DQN
 import numpy as np
 
-num_episodes = 250
+num_episodes = 10
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
@@ -33,8 +33,9 @@ for episode in range(num_episodes):
             action = (
                 policy_net(state).max(1).indices.view(1, 1)
             )  # Exploit (best action)
-        action_array.append(action.item())
-        state_array.append(state.cpu().numpy().squeeze())
+
+        state_array.append(state)
+        action_array.append(action)
         next_state, reward, terminated, truncated, info = env.step(action.item())
         state = torch.tensor(next_state, dtype=torch.float32, device=device).unsqueeze(
             0

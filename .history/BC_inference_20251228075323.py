@@ -18,7 +18,7 @@ n_actions = env.action_space.n
 policy_net = DQN(n_observations, n_actions).to(device)
 
 # Load the trained weights
-policy_net.load_state_dict(torch.load("models/dqn_lunar_lander.pth"))
+policy_net.load_state_dict(torch.load("best_model.pth"))
 policy_net.eval()  # Set the model to evaluation mode
 
 print("Model loaded successfully!")
